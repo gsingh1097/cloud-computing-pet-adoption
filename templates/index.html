@@ -97,7 +97,7 @@ h1 {
 <div class="pets-container">
     {% for pet in pets %}
     <div class="pet-card">
-        <img src="/static/images/{{ pet.image }}" alt="{{ pet.name }}">
+        <img src="{{ pet.image }}" alt="{{ pet.name }}">
         <div class="pet-name">{{ pet.name }}</div>
         <div class="pet-info">Age: {{ pet.age }}</div>
         <div class="pet-info">Breed: {{ pet.breed }}</div>

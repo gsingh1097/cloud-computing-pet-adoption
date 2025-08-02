@@ -22,8 +22,8 @@ def upload ():
         pet_breed = request.form['pet_breed']
         image = request.files['file']
         #save the image and get the filename
-        image_filename = uploadImageOnFolder(image)
-        # image_filename = uploadImageOnS3(image)
+        # image_filename = uploadImageOnFolder(image)
+        image_filename = uploadImageOnS3(image)
         new_pet = {
             "name": pet_name,
             "age": pet_age,
@@ -62,13 +62,8 @@ def uploadImageOnS3(image):
     timestamp = int(time.time())
     random_letters = ''.join(random.choices(string.ascii_letters, k=5))
     image_filename = f"{timestamp}_{random_letters}_{image.filename}"
-    s3.upload_fileobj(
-        image,
-        BUCKET,
-        image_filename,
-        ExtraArgs={'ACL': 'public-read', 'ContentType': image.content_type}
-    )
-    url = f"https://{BUCKET}.s3.amazonaws.com/{image_filename}"
+    s3.upload_fileobj(image,BUCKET,image_filename)
+    url = f"https://{BUCKET}.s3.us-east-2.amazonaws.com/{image_filename}"
     return url
 
 def getPets(pets)   :
@@ -83,5 +78,5 @@ def getPets(pets)   :
     return pets
 
 if __name__ == '__main__':
-    # app.run(host='0.0.0.0', port=80)
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=80)
+    # app.run(debug=True)
