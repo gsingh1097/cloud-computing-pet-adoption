@@ -1,0 +1,115 @@
+<html>  
+<head>  
+    <title>Upload New Pet</title>  
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f7f7f7;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+  display: flex;
+  justify-content: center;
+}
+
+.topnav a {
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 40px;
+  color: #04AA6D;
+  font-size: 2em;
+}
+
+.form-container {
+  background: #fff;
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 32px 28px 24px 28px;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 18px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1em;
+  background: #f9f9f9;
+}
+
+input[type="submit"] {
+  width: 100%;
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+input[type="submit"]:hover {
+  background-color: #028a56;
+}
+</style>
+</head>  
+<body> 
+<!-- top navigation bar -->    
+<div class="topnav">
+  <a href="/">Home</a>
+  <a class="active" href="/upload">Add a New Pet for Adoption</a>
+    <a href="/adoptPet">How to Adopt</a>
+</div>
+
+<h1>Add a New Pet for Adoption</h1><div class="form-container">
+    <form action="/upload" method="post" enctype="multipart/form-data">  
+        <label for="pet_name">Pet Name:</label>
+        <input type="text" id="pet_name" name="pet_name" required>
+
+        <label for="pet_age">Age:</label>
+        <input type="number" id="pet_age" name="pet_age" min="0" required>
+
+        <label for="pet_breed">Breed:</label>
+        <input type="text" id="pet_breed" name="pet_breed" required>
+
+        <label for="file">Image:</label>
+        <input type="file" id="file" name="file" accept="image/*" required>
+        
+        <input type="submit" value="Upload">  
+    </form>  
+</div>
+</body>  
+</html>
